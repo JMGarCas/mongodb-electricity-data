@@ -1,23 +1,22 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
-  name: String,
-  address: {
-    city: String,
-    country: String,
-    street: String,
-  },
-  telephone: {
+const { Schema } = mongoose;
+
+const userSchema = new Schema({
+  username: {
     type: String,
-    validate: {
-      validator: function (v) {
-        // 9 digits
-        return /^\d{9}$/.test(v);
-      },
-      message: (props) => `${props.value} is not a valid phone number!`,
-    },
+    required: true,
+    unique: true
   },
-  households: [{ type: mongoose.Schema.Types.ObjectId, ref: "Household" }],
+  password: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  energies: [{ type: Schema.Types.ObjectId, ref: "Energy" }],
 });
 
 const User = mongoose.model("User", userSchema);
