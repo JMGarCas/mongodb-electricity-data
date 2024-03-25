@@ -21,3 +21,13 @@ export const deleteHousehold = async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 };
+
+export const createHousehold = async (req, res) => {
+    try {
+        const household = new Household(req.body);
+        await household.save();
+        res.status(201).json(household);
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+    };
