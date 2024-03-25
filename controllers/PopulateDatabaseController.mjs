@@ -17,7 +17,6 @@ export default router.get("/populate-database", async (req, res) => {
       mapValues: ({ value }) => value.replace(/,/g, '.')
   }))
     .on("data", async (row) => {
-      console.log(row);
       const energy = new Energy({
         entity: row.entity,
         year: row.year,
