@@ -53,3 +53,18 @@ export const createEnergy = async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 };
+
+export const updateEnergy = async (req, res) => {
+  try {
+      const { id } = req.params;
+      const updated = await Energy.findByIdAndUpdate(id, req.body);
+      if (updated) {
+          const energy = await Energy.findById(id);
+          return res.status(200).json(energy);
+      }
+      throw new Error("Energy not found");
+  }
+  catch (error) {
+      return res.status(500).json({ error: error.message });
+  }   
+}
