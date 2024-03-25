@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "nodemon backend.mjs && node swagger.js"
+    "dev": "nodemon backend.mjs && node swagger.mjs"
   },
   "dependencies": {
     "csv-parser": "^3.0.0",

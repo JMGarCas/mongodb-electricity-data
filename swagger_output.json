@@ -10,5 +10,16 @@
   "schemes": [
     "http"
   ],
-  "paths": {}
+  "paths": {
+    "/households": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  }
 }
