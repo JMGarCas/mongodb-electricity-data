@@ -1,12 +1,14 @@
 {
   "scripts": {
-    "dev": "nodemon backend.mjs"
+    "dev": "nodemon backend.mjs && node swagger.js"
   },
   "dependencies": {
     "csv-parser": "^3.0.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.1",
     "mongoose": "^8.2.3",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.0"
   }
 }

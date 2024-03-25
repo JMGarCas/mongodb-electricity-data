@@ -4,6 +4,8 @@ import csv from "csv-parser";
 import Household from "./database/Household.mjs";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import swaggerUi from "swagger-ui-express";
+import swaggerFile from "./swagger_output.json" assert { type: "json" };
 
 dotenv.config();
 mongoose.connect(process.env.DATABASE_URL);
@@ -46,5 +48,7 @@ app.get("/populate-database", (req, res) => {
       res.redirect("/");
     });
 });
+
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.listen(3000);
