@@ -57,9 +57,7 @@
             "description": "Internal Server Error"
           }
         }
-      }
-    },
-    "/energies/delete/{id}": {
+      },
       "delete": {
         "description": "",
         "parameters": [
@@ -78,22 +76,7 @@
             "description": "Internal Server Error"
           }
         }
-      }
-    },
-    "/energies/create": {
-      "post": {
-        "description": "",
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/energies/update/{id}": {
+      },
       "put": {
         "description": "",
         "parameters": [
@@ -107,6 +90,67 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/energies/": {
+      "post": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/energies/country/{country}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "country",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/energies/year/{year}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"

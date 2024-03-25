@@ -7,6 +7,7 @@ import {
   createEnergy,
   updateEnergy,
   getEnergiesByCountry,
+  getEnergiesByYear
 } from "../controllers/EnergyController.mjs";
 
 const router = Router();
@@ -18,5 +19,6 @@ router.delete("/energies/:id", deleteEnergy);
 router.post("/energies/", createEnergy);
 router.put("/energies/:id", updateEnergy);
 router.get("/energies/country/:country", getEnergiesByCountry);
+router.get("/energies/year/:year", getEnergiesByYear);
 
 export default router;
