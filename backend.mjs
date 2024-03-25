@@ -6,12 +6,15 @@ import swaggerFile from "./swagger_output.json" assert { type: "json" };
 import HouseholdRoutes from "./routes/HouseholdRoutes.mjs";
 import PopulateDatabaseController from "./controllers/PopulateDatabaseController.mjs";
 
+
 dotenv.config();
 mongoose.connect(process.env.DATABASE_URL);
 
 const app = express();
+app.use(express.json());
 app.use(PopulateDatabaseController);
 app.use(HouseholdRoutes);
+
 
 app.get("/", (req, res) => {
   res.send("hello");
