@@ -36,7 +36,6 @@ export const updateHousehold = async (req, res) => {
     try {
         const { id } = req.params;
         const updated = await Household.findByIdAndUpdate(id, req.body);
-        console.log(req.body);
         if (updated) {
             const household = await Household.findById(id);
             return res.status(200).json(household);
