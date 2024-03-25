@@ -9,6 +9,15 @@ export const getHouseholds = async (req, res) => {
   }
 };
 
+export const deleteAllHouseholds = async (req, res) => {
+  try {
+    await Household.deleteMany({});
+    res.status(200).send("All households deleted");
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
 export const deleteHousehold = async (req, res) => {
   try {
     const { id } = req.params;
@@ -23,11 +32,11 @@ export const deleteHousehold = async (req, res) => {
 };
 
 export const createHousehold = async (req, res) => {
-    try {
-        const household = new Household(req.body);
-        await household.save();
-        res.status(201).json(household);
-    } catch (error) {
-        return res.status(500).json({ error: error.message });
-    }
-    };
+  try {
+    const household = new Household(req.body);
+    await household.save();
+    res.status(201).json(household);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
