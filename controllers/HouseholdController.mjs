@@ -9,6 +9,19 @@ export const getHouseholds = async (req, res) => {
   }
 };
 
+export const getHousehold = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const household = await Household.findById(id);
+    if (household) {
+      return res.json(household);
+    }
+    return res.status(404).send("Household not found");
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
 export const deleteAllHouseholds = async (req, res) => {
   try {
     await Household.deleteMany({});
