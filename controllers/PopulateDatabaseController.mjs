@@ -13,10 +13,14 @@ function convertDateFormat(input) {
   )}`;
 }
 
-export default router.get("/populate-database", (req, res) => {
+export default router.get("/populate-database", async (req, res) => {
+  let households = await Household.find({});
+  if (households.length > 0) {
+    return res.status(400).send("Database already populated");
+  }
   fs.createReadStream("./static/hpc.csv")
     .pipe(csv())
-    .on("data", (row) => {
+    .on("data", async (row) => {
       const formattedDateStr = convertDateFormat(row.Date); // replace "date" with the actual column name
       const dateTimeStr = `${formattedDateStr} ${row.Time}`; // replace "time" with the actual column name
       const dateTime = new Date(dateTimeStr);
@@ -31,7 +35,7 @@ export default router.get("/populate-database", (req, res) => {
         laundry: row.Sub_metering_2,
         heater: row.Ssub_metering_3,
       });
-      household.save();
+      await household.save();
     })
     .on("end", () => {
       res.redirect("/");

@@ -11,8 +11,7 @@ mongoose.connect(process.env.DATABASE_URL);
 
 const app = express();
 app.use(PopulateDatabaseController);
-
-app.use(HouseholdRoutes)
+app.use(HouseholdRoutes);
 
 app.get("/", (req, res) => {
   res.send("hello");

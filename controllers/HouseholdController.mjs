@@ -1,12 +1,23 @@
-import Household from '../database/Household.mjs';
+import Household from "../database/Household.mjs";
 
-const getHouseholds = async (req, res) => {
-    try{
-        const households = await Household.find({});
-        res.json(households);
-    } catch (error) {
-        return res.status(500).json({error: error.message});
+export const getHouseholds = async (req, res) => {
+  try {
+    const households = await Household.find({});
+    res.json(households);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+export const deleteHousehold = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleted = await Household.findByIdAndDelete(id);
+    if (deleted) {
+      return res.status(200).send("Household deleted");
     }
-}
-
-export default getHouseholds;
+    throw new Error("Household not found");
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
