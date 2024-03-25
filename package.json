@@ -1,9 +1,11 @@
 {
   "scripts": {
-    "dev": "nodemon backend.mjs"
+    "dev": "nodemon backend.mjs && node swagger.js"
   },
   "dependencies": {
     "express": "^4.19.1",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.0"
   }
 }
