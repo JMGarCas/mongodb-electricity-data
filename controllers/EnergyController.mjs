@@ -68,3 +68,30 @@ export const updateEnergy = async (req, res) => {
       return res.status(500).json({ error: error.message });
   }   
 }
+
+export const getEnergiesByCountry = async (req, res) => {
+  try {
+    const { country } = req.params;
+    const energies = await Energy.find({ entity: country });
+    if (energies.length === 0) {
+      return res.status(404).send("Country not found");
+    }
+    res.json(energies);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+}
+
+
+export const getEnergiesByYear = async (req, res) => {
+  try {
+    const { year } = req.params;
+    const energies = await Energy.find({ year: year });
+    if (energies.length === 0) {
+      return res.status(404).send("Year not found");
+    }
+    res.json(energies);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+}

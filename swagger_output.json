@@ -13,31 +13,31 @@
   "paths": {
     "/energies": {
       "get": {
-        "description": "",
+        "description": "Retrieve all energy data.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK - Successful retrieval of energy data."
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error - Server encountered an unexpected condition."
           }
         }
       },
       "delete": {
-        "description": "",
+        "description": "Delete all energy data.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK - Successful deletion of all energy data."
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error - Server encountered an unexpected condition."
           }
         }
       }
     },
     "/energies/{id}": {
       "get": {
-        "description": "",
+        "description": "Retrieve energy data by ID.",
         "parameters": [
           {
             "name": "id",
@@ -48,20 +48,18 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK - Successful retrieval of energy data."
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found - Energy data with the specified ID not found."
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error - Server encountered an unexpected condition."
           }
         }
-      }
-    },
-    "/energies/delete/{id}": {
+      },
       "delete": {
-        "description": "",
+        "description": "Delete energy data by ID.",
         "parameters": [
           {
             "name": "id",
@@ -72,33 +70,52 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK - Successful deletion of energy data."
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error - Server encountered an unexpected condition."
+          }
+        }
+      },
+      "put": {
+        "description": "Update energy data by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK - Successful update of energy data."
+          },
+          "500": {
+            "description": "Internal Server Error - Server encountered an unexpected condition."
           }
         }
       }
     },
-    "/energies/create": {
+    "/energies/": {
       "post": {
-        "description": "",
+        "description": "Create new energy data.",
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Created - Energy data created successfully."
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error - Server encountered an unexpected condition."
           }
         }
       }
     },
-    "/energies/update/{id}": {
-      "put": {
-        "description": "",
+    "/energies/country/{country}": {
+      "get": {
+        "description": "Retrieve energy data by country.",
         "parameters": [
           {
-            "name": "id",
+            "name": "country",
             "in": "path",
             "required": true,
             "type": "string"
@@ -106,10 +123,37 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK - Successful retrieval of energy data."
+          },
+          "404": {
+            "description": "Not Found - Energy data for the specified country not found."
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error - Server encountered an unexpected condition."
+          }
+        }
+      }
+    },
+    "/energies/year/{year}": {
+      "get": {
+        "description": "Retrieve energy data by year.",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK - Successful retrieval of energy data."
+          },
+          "404": {
+            "description": "Not Found - Energy data for the specified year not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Server encountered an unexpected condition."
           }
         }
       }
