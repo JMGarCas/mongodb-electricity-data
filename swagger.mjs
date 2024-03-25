@@ -7,7 +7,7 @@ const endpointsFiles = ['./routes/*.mjs']; // specify routes folder
 
 const doc = {
   info: {
-    title: 'Electricity Household Documentation',
+    title: 'Sustainable Electricity Documentation',
     description: 'Project done by JMGarCas and Marchabar',
   }
 };
