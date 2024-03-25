@@ -5,7 +5,8 @@ import {
   deleteAllEnergies,
   deleteEnergy,
   createEnergy,
-  updateEnergy
+  updateEnergy,
+  getEnergiesByCountry,
 } from "../controllers/EnergyController.mjs";
 
 const router = Router();
@@ -16,5 +17,6 @@ router.delete("/energies", deleteAllEnergies);
 router.delete("/energies/:id", deleteEnergy);
 router.post("/energies/", createEnergy);
 router.put("/energies/:id", updateEnergy);
+router.get("/energies/country/:country", getEnergiesByCountry);
 
 export default router;
