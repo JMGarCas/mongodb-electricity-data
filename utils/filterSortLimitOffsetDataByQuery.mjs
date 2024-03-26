@@ -22,7 +22,6 @@ function filterDataByQuery(query, data) {
 
 function sortDataByQuery(query, data) {
   let { sortBy, sortOrder } = query;
-  console.log(sortBy, sortOrder);
   if (sortBy !== undefined) {
     data = data.sort((a, b) => {
       if (a[sortBy] < b[sortBy]) {
