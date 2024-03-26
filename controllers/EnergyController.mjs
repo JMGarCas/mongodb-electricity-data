@@ -1,9 +1,12 @@
 import Energy from "../database/Energy.mjs";
+import filterAndSortDataByQuery from "../utils/filterAndSortDataByQuery.mjs";
 
 export const getEnergies = async (req, res) => {
   try {
+    const query = req.query;
     const energies = await Energy.find({});
-    res.json(energies);
+    const filteredEnergies = filterAndSortDataByQuery(query, energies);
+    res.json(filteredEnergies);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -56,18 +59,17 @@ export const createEnergy = async (req, res) => {
 
 export const updateEnergy = async (req, res) => {
   try {
-      const { id } = req.params;
-      const updated = await Energy.findByIdAndUpdate(id, req.body);
-      if (updated) {
-          const energy = await Energy.findById(id);
-          return res.status(200).json(energy);
-      }
-      throw new Error("Energy not found");
+    const { id } = req.params;
+    const updated = await Energy.findByIdAndUpdate(id, req.body);
+    if (updated) {
+      const energy = await Energy.findById(id);
+      return res.status(200).json(energy);
+    }
+    throw new Error("Energy not found");
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
   }
-  catch (error) {
-      return res.status(500).json({ error: error.message });
-  }   
-}
+};
 
 export const getEnergiesByCountry = async (req, res) => {
   try {
@@ -80,8 +82,7 @@ export const getEnergiesByCountry = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
-}
-
+};
 
 export const getEnergiesByYear = async (req, res) => {
   try {
@@ -94,4 +95,4 @@ export const getEnergiesByYear = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
-}
+};
