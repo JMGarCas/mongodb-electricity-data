@@ -1,11 +1,11 @@
 import Energy from "../database/Energy.mjs";
-import filterSortLimitDataByQuery from "../utils/filterSortLimitDataByQuery.mjs";
+import filterSortLimitOffsetDataByQuery from "../utils/filterSortLimitOffsetDataByQuery.mjs";
 
 export const getEnergies = async (req, res) => {
   try {
     const query = req.query;
     const energies = await Energy.find({});
-    const filteredEnergies = filterSortLimitDataByQuery(query, energies);
+    const filteredEnergies = filterSortLimitOffsetDataByQuery(query, energies);
     res.json(filteredEnergies);
   } catch (error) {
     return res.status(500).json({ error: error.message });

@@ -58,7 +58,7 @@ function limitOffsetDataByQuery(query, data) {
   return data;
 }
 
-export default function filterSortLimitDataByQuery(query, data) {
+export default function filterSortLimitOffsetDataByQuery(query, data) {
   data = filterDataByQuery(query, data);
   data = sortDataByQuery(query, data);
   data = limitOffsetDataByQuery(query, data);
